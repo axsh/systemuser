@@ -2,7 +2,7 @@ FROM jupyter/systemuser
 
 # Install psychopg2
 RUN apt-get update
-RUN apt-get -y install libpq-dev
+RUN apt-get -y install libpq-dev python-dev
 RUN pip install psycopg2
 RUN /opt/conda/envs/python2/bin/pip install psycopg2
 
