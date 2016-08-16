@@ -23,6 +23,9 @@ RUN pip install ipywidgets
 RUN pip install --pre nbgrader
 RUN /opt/conda/envs/python2/bin/pip install --pre nbgrader
 
+RUN pip install bash_kernel
+RUN python -m bash_kernel.install
+
 # Install the nbgrader extensions
 RUN nbgrader extension install
 
