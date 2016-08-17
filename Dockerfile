@@ -23,11 +23,21 @@ RUN pip install ipywidgets
 RUN pip install --pre nbgrader
 RUN /opt/conda/envs/python2/bin/pip install --pre nbgrader
 
+# Install standard bash_kernel
 RUN pip install bash_kernel
 RUN python -m bash_kernel.install
 
+# Install nbextensions (currently fails)
+#RUN pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip --user
+
+RUN mv /opt/anaconda3/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/anaconda3/lib/python3.5/site-packages/bash_kernel/kernel.py.bak
+
+ADD bin/kernel.py /opt/anaconda3/lib/python3.5/site-packages/bash_kernel/kernel.py
+
+ADD bin/* /usr/local/bin
+
 # Install the nbgrader extensions
-RUN nbgrader extension install
+#RUN nbgrader extension install
 
 # Create nbgrader profile and add nbgrader config
 ADD nbgrader_config.py /etc/jupyter/nbgrader_config.py
