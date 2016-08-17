@@ -34,7 +34,7 @@ RUN mv /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/conda/l
 
 ADD bin/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py
 
-ADD bin/* /usr/local/bin
+ADD bin/* /usr/local/bin/
 
 # Install the nbgrader extensions
 #RUN nbgrader extension install
