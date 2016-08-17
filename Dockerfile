@@ -40,6 +40,7 @@ ADD bin/* /usr/local/bin/
 # Install mussel
 RUN apt-get -y install curl
 RUN apt-get -y install netcat
+RUN apt-get -y install ssh
 COPY wakamevdc-client-w-mussel.tar.gz /root/
 COPY mussel-completion.tar.gz /root/
 RUN ls -l /root
