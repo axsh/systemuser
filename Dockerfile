@@ -30,11 +30,20 @@ RUN python -m bash_kernel.install
 # Install nbextensions (currently fails)
 #RUN pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip --user
 
+# Install custom bash kernel and extensions
 RUN mv /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py.bak
 
 ADD bin/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py
 
 ADD bin/* /usr/local/bin/
+
+# Install mussel
+RUN apt-get -y install curl
+RUN apt-get -y install netcat
+ADD wakamevdc-client-w-mussel.tar.gz /root
+ADD mussel-completion.tar.gz /root
+RUN tar xzvf /root/wakamevdc-client-w-mussel.tar.gz -C /
+RUN tar xzvf /root/mussel-completion.tar.gz -C /
 
 # Install the nbgrader extensions
 #RUN nbgrader extension install
