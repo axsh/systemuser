@@ -233,7 +233,7 @@ do-provided-script-logic()
 # for testing:
 while sleep 0.2; do
     [ "$default_dir" != "" ] && cd "$default_dir" 2>/dev/null
-    ls -l /proc/$BASHPID/fd >>/tmp/sbash.log
+#    ls -l /proc/$BASHPID/fd >>/tmp/sbash.log
 
     readcell_inline
 
