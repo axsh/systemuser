@@ -45,6 +45,7 @@ COPY mussel-completion.tar.gz /root/
 RUN ls -l /root
 RUN tar xzvf /root/wakamevdc-client-w-mussel.tar.gz -C /
 RUN tar xzvf /root/mussel-completion.tar.gz -C /
+RUN ln -s /opt/axsh/wakame-vdc/client/mussel/bin/mussel /usr/local/bin
 
 # Install the nbgrader extensions
 #RUN nbgrader extension install
