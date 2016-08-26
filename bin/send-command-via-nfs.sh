@@ -4,6 +4,7 @@
 send_command_via_nfs()
 {
     fn=~/.commands/test
+    mkdir -p ~/.commands
     {
 	echo "$*"
 	echo "EOCommand"
