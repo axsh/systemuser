@@ -30,10 +30,11 @@ RUN python -m bash_kernel.install
 # Install nbextensions (currently fails)
 #RUN pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip --user
 
-# Install custom bash kernel and extensions
-RUN mv /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py.bak
-
-ADD bin/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py
+#### The custom changes here have now been merged with the standard bash kernel
+## # Install custom bash kernel and extensions
+## RUN mv /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py.bak
+##
+## ADD bin/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py
 
 ADD bin/* /usr/local/bin/
 
