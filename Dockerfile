@@ -19,9 +19,13 @@ RUN pip install scikit-learn==0.15
 # Install widgets
 RUN pip install ipywidgets
 
+#### We do not use nbgrader, and as of 2017-02-15, it pulls
+## # in https://pypi.python.org/pypi/notebook/5.0.0b1,
+## # which does not work with the verion of jupyterhub-singleuser
+## # packed into our jupyterhub.
 # Install nbgrader
-RUN pip install --pre nbgrader
-RUN /opt/conda/envs/python2/bin/pip install --pre nbgrader
+#RUN pip install --pre nbgrader
+#RUN /opt/conda/envs/python2/bin/pip install --pre nbgrader
 
 # Install standard bash_kernel
 RUN pip install bash_kernel
@@ -53,7 +57,7 @@ RUN ln -s /opt/axsh/wakame-vdc/client/mussel/bin/mussel /usr/local/bin
 #RUN nbgrader extension install
 
 # Create nbgrader profile and add nbgrader config
-ADD nbgrader_config.py /etc/jupyter/nbgrader_config.py
+# ADD nbgrader_config.py /etc/jupyter/nbgrader_config.py
 
 ## start installing stuff for NII_jupyter_tutorials
 RUN /opt/conda/envs/python2/bin/pip install Imagen
