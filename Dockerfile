@@ -33,6 +33,10 @@ RUN python -m bash_kernel.install
 
 # Install nbextensions (currently fails)
 #RUN pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip --user
+RUN pip install jupyter_contrib_nbextensions
+RUN jupyter contrib nbextension install --user
+RUN pip install jupyter_nbextensions_configurator
+RUN find /home -ls > /root/home-contents.findls
 
 #### The custom changes here have now been merged with the standard bash kernel
 ## # Install custom bash kernel and extensions
