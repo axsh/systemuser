@@ -31,12 +31,14 @@ RUN pip install ipywidgets
 RUN pip install bash_kernel
 RUN python -m bash_kernel.install
 
+RUN find /home -ls > /root/home-contents0.findls
+
 # Install nbextensions (currently fails)
 #RUN pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip --user
 RUN pip install jupyter_contrib_nbextensions
-RUN jupyter contrib nbextension install --user
+RUN jupyter contrib nbextension install
 RUN pip install jupyter_nbextensions_configurator
-RUN find /home -ls > /root/home-contents.findls
+RUN find /home -ls > /root/home-contents1.findls
 
 RUN jupyter nbextension enable collapsible_headings/main
 RUN jupyter nbextension enable init_cell/main
