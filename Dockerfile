@@ -1,5 +1,10 @@
 FROM jupyter/systemuser
 
+# Use our modified copy of start-systemuser.sh from dockerspawner/systemuser
+
+RUN rm -f /usr/local/bin/start-systemuser.sh
+ADD systemuser.sh /usr/local/bin/start-systemuser.sh
+
 # Install psychopg2
 RUN apt-get update
 RUN apt-get -y install libpq-dev python-dev
