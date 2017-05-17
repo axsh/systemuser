@@ -48,10 +48,10 @@ RUN jupyter contrib nbextension install
 RUN pip install jupyter_nbextensions_configurator
 RUN find /home -ls > /root/home-contents1.findls
 
-RUN jupyter nbextension enable collapsible_headings/main
-RUN jupyter nbextension enable init_cell/main
-RUN jupyter nbextension enable runtools/main
-RUN jupyter nbextension enable toc2/main
+RUN jupyter nbextension enable collapsible_headings/main --system
+RUN jupyter nbextension enable init_cell/main --system
+RUN jupyter nbextension enable runtools/main --system
+RUN jupyter nbextension enable toc2/main --system
 RUN find /home -ls > /root/home-contents2.findls
 
 #### The custom changes here have now been merged with the standard bash kernel
