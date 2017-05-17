@@ -9,6 +9,9 @@ RUN /opt/conda/envs/python2/bin/pip install psycopg2
 # Install nano
 RUN apt-get -y install nano
 
+# Install commands need for NII
+RUN apt-get -y install rsync jq file
+
 # Install terminado
 RUN /opt/conda/envs/python2/bin/pip install terminado
 RUN pip install terminado
