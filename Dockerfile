@@ -75,5 +75,5 @@ RUN ln -s /opt/axsh/wakame-vdc/client/mussel/bin/mussel /usr/local/bin
 # ADD nbgrader_config.py /etc/jupyter/nbgrader_config.py
 
 ## start installing stuff for NII_jupyter_tutorials
-RUN /opt/conda/envs/python2/bin/pip install Imagen
-RUN /opt/conda/envs/python2/bin/pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.6.0-cp27-none-linux_x86_64.whl --ignore-installed
+# RUN /opt/conda/envs/python2/bin/pip install Imagen
+# RUN /opt/conda/envs/python2/bin/pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.6.0-cp27-none-linux_x86_64.whl --ignore-installed
