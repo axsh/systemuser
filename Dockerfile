@@ -1,5 +1,10 @@
 FROM jupyter/systemuser
 
+# Use our modified copy of start-systemuser.sh from dockerspawner/systemuser
+
+RUN rm -f /usr/local/bin/start-systemuser.sh
+ADD systemuser.sh /usr/local/bin/start-systemuser.sh
+
 # Install psychopg2
 RUN apt-get update
 RUN apt-get -y install libpq-dev python-dev
@@ -8,6 +13,9 @@ RUN /opt/conda/envs/python2/bin/pip install psycopg2
 
 # Install nano
 RUN apt-get -y install nano
+
+# Install commands need for NII
+RUN apt-get -y install rsync jq file
 
 # Install terminado
 RUN /opt/conda/envs/python2/bin/pip install terminado
@@ -31,14 +39,27 @@ RUN pip install ipywidgets
 RUN pip install bash_kernel
 RUN python -m bash_kernel.install
 
+RUN find /home -ls > /root/home-contents0.findls
+
 # Install nbextensions (currently fails)
 #RUN pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip --user
+RUN pip install jupyter_contrib_nbextensions
+RUN jupyter contrib nbextension install
+RUN pip install jupyter_nbextensions_configurator
+RUN find /home -ls > /root/home-contents1.findls
+
+RUN jupyter nbextension enable collapsible_headings/main --system
+RUN jupyter nbextension enable init_cell/main --system
+RUN jupyter nbextension enable runtools/main --system
+RUN jupyter nbextension enable toc2/main --system
+RUN find /home -ls > /root/home-contents2.findls
 
 #### The custom changes here have now been merged with the standard bash kernel
-## # Install custom bash kernel and extensions
-## RUN mv /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py.bak
-##
-## ADD bin/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py
+# However, we need a couple changes for extend_bashkernel-2modes.source
+# 
+RUN mv /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py.bak
+
+ADD bin/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py
 
 ADD bin/* /usr/local/bin/
 
@@ -60,5 +81,5 @@ RUN ln -s /opt/axsh/wakame-vdc/client/mussel/bin/mussel /usr/local/bin
 # ADD nbgrader_config.py /etc/jupyter/nbgrader_config.py
 
 ## start installing stuff for NII_jupyter_tutorials
-RUN /opt/conda/envs/python2/bin/pip install Imagen
-RUN /opt/conda/envs/python2/bin/pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.6.0-cp27-none-linux_x86_64.whl --ignore-installed
+# RUN /opt/conda/envs/python2/bin/pip install Imagen
+# RUN /opt/conda/envs/python2/bin/pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.6.0-cp27-none-linux_x86_64.whl --ignore-installed
