@@ -57,9 +57,9 @@ RUN find /home -ls > /root/home-contents2.findls
 #### The custom changes here have now been merged with the standard bash kernel
 # However, we need a couple changes for extend_bashkernel-2modes.source
 # 
-RUN mv /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py.bak
+# RUN mv /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py.bak
 
-ADD bin/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py
+# ADD bin/kernel.py /opt/conda/lib/python3.5/site-packages/bash_kernel/kernel.py
 
 ADD bin/* /usr/local/bin/
 
