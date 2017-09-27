@@ -9,7 +9,7 @@ ADD systemuser.sh /usr/local/bin/start-systemuser.sh
 RUN apt-get update
 RUN apt-get -y install libpq-dev python-dev
 RUN pip install psycopg2
-RUN /opt/conda/envs/python2/bin/pip install psycopg2
+#RUN /opt/conda/envs/python2/bin/pip install psycopg2
 
 # Install nano
 RUN apt-get -y install nano
@@ -18,7 +18,7 @@ RUN apt-get -y install nano
 RUN apt-get -y install rsync jq file
 
 # Install terminado
-RUN /opt/conda/envs/python2/bin/pip install terminado
+#RUN /opt/conda/envs/python2/bin/pip install terminado
 RUN pip install terminado
 
 # Install scikit-learn
