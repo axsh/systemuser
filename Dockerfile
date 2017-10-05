@@ -1,4 +1,6 @@
-FROM jupyter/systemuser
+FROM jupyter/scipy-notebook
+
+USER root
 
 # Use our modified copy of start-systemuser.sh from dockerspawner/systemuser
 
